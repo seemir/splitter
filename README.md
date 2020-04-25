@@ -37,8 +37,8 @@ csv_row[n^3]   -> append -> xlsx_file[n]
 Install dependencies with `--user` permission
 
 ```bash
-git clone splitter/repo
-cd to/the/splitter/folder
+git clone repo
+cd to the/splitter/folder
 pip install -r requirements.txt --user
 
 ```
