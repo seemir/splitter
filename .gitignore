@@ -108,3 +108,9 @@ venv.bak/
 
 # db
 *.sqlite
+
+# csv
+*.csv
+
+# folder
+ETA*
