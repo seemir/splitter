@@ -37,7 +37,8 @@ csv_row[n^3]   -> append -> xlsx_file[n]
 Install dependencies with `--user` permission
 
 ```bash
-cd to/splitter/folder
+git clone splitter/repo
+cd to/the/splitter/folder
 pip install -r requirements.txt --user
 
 ```
@@ -48,7 +49,7 @@ As the library is not published to PyPi one cannot install the library using the
 to run the program.
 
 ```bash
-python splitter.py -csv csv_file_to_process.csv -n 50
+python splitter.py -csv csv_file_to_process.csv -n number_of_xlsx_files
 
 ```
 ## Support
