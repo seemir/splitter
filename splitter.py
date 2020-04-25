@@ -40,7 +40,6 @@ def splitter(args):
     .
     .
     .
-    csv_row[n^3]   -> append -> xlsx_file[n]
 
     Parameters
     ----------

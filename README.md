@@ -27,7 +27,6 @@ csv_row[3n]    -> append -> xlsx_file[n]
 .
 .
 .
-csv_row[n^3]   -> append -> xlsx_file[n]
 
 ```
 
