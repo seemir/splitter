@@ -66,7 +66,7 @@ python splitter.py -h
 |___/ .__/|_|_|\__|\__\___|_|
     |_|
 
-Author: Samir Adrik and Mohamed Adrik
+Authors: Samir Adrik and Mohamed Adrik
 Email: samir.adrik@gmail.com, mohamed.adrik@knowit.no
 Version: 0.1.4
 

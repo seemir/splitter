@@ -13,6 +13,8 @@ from pyfiglet import Figlet
 from argparse import ArgumentParser
 from pandas import read_csv, DataFrame
 
+from win32com.client import Dispatch
+
 
 def splitter(args):
     """
@@ -92,19 +94,25 @@ def splitter(args):
         if not os.path.exists(file_dir):
             os.makedirs(file_dir)
 
+        excel = Dispatch("Excel.Application")
         for i, df in enumerate(df_list):
             saved_file_name = r"{}\ETA_{:02d}.xlsx".format(file_dir, i + 1)
             sys.stdout.write("\rsaving '{}' (#{})".format(saved_file_name, i + 1))
             sys.stdout.flush()
 
-            df.astype({"MeteringPointId": str}).reset_index(
-                drop=True).to_excel(saved_file_name, index=False,
-                                    sheet_name="ETA_{:02d}".format(i + 1))
+            df.astype(str).reset_index(drop=True).to_excel(saved_file_name, index=False,
+                                                           sheet_name="ETA_{:02d}".format(i + 1))
+            wb = excel.Workbooks.Open(saved_file_name)
+            excel.Worksheets(1).Activate()
+            excel.ActiveSheet.Columns.AutoFit()
+            excel.ActiveSheet.Columns.HorizontalAlignment = -4131
+            wb.Save()
+            wb.Close()
 
         print("\n\nfinished creating and saving n = {} '.xlsx' file(s), elapsed: {}s".format(
             n, round((time() - start), 7)))
     except Exception as reading_exception:
-        raise TypeError(
+        raise OSError(
             "Something happened! please insure that the input file-format is '.csv', "
             "exited with'{}'".format(reading_exception))
 
@@ -116,7 +124,7 @@ def main():
     """
     fig = Figlet(font='standard')
     print(fig.renderText('splitter'))
-    print('Author: ' + __author__)
+    print('Authors: ' + __author__)
     print('Email: ' + __email__)
     print('Version: ' + __version__ + '\n')
 
