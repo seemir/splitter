@@ -87,7 +87,7 @@ def splitter(args):
             file_name, round((time() - start), 7)))
 
         timestamp = datetime.datetime.now().isoformat().replace(".", "_").replace(":", "_")
-        file_dir = os.path.dirname(os.path.abspath(__file__)) + r"\eta_{}".format(timestamp)
+        file_dir = os.path.dirname(os.path.abspath(__file__)) + r"\ETA_{}".format(timestamp)
 
         if not os.path.exists(file_dir):
             os.makedirs(file_dir)
