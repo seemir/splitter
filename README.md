@@ -4,26 +4,26 @@ Splitter is a naive / brute-force python library for dealing with splitting larg
 into  separate `.xlsx` files. 
 
 # Description 
-The library contains a function `splitter()` which takes three arguments, i.e. `csv`, `n` and `na`[optional]. 
+The library contains a `splitter()` function which takes in three arguments, i.e. `csv`, `n` and `na`[optional]. 
 Given these three arguments the function splits the full `.csv` file with data into `n` separate `.xlsx` files 
 based on a row breakpoint (which is `n`), i.e. each row is appended to its own file until `row_num % n == 0`. Then the 
 algorithm starts over and appends the next series of rows into the already created files starting over from file number 
 `1, 2, 3 ... n`, as follows:
 ```
-csv_row[1]    -> append -> xlsx_file[1]
-csv_row[2]    -> append -> xlsx_file[2]
+csv_row[1]     -> append -> xlsx_file[1]
+csv_row[2]     -> append -> xlsx_file[2]
 ...
-csv_row[n]    -> append -> xlsx_file[n]
+csv_row[n]     -> append -> xlsx_file[n]
 
-csv_row[n+1]  -> append -> xlsx_file[1]
-csv_row[n+2]  -> append -> xlsx_file[2]
+csv_row[n+1]   -> append -> xlsx_file[1]
+csv_row[n+2]   -> append -> xlsx_file[2]
 ...
-csv_row[2n]   -> append -> xlsx_file[n]
+csv_row[2n]    -> append -> xlsx_file[n]
 
-csv_row[2n+1] -> append -> xlsx_file[1]
-csv_row[2n+2] -> append -> xlsx_file[2]
+csv_row[2n+1]  -> append -> xlsx_file[1]
+csv_row[2n+2]  -> append -> xlsx_file[2]
 ...
-csv_row[3n]   -> append -> xlsx_file[n]
+csv_row[3n]    -> append -> xlsx_file[n]
 .
 .
 .
@@ -68,7 +68,7 @@ python splitter.py -h
 
 Authors: Samir Adrik and Mohamed Adrik
 Email: samir.adrik@gmail.com, mohamed.adrik@knowit.no
-Version: 0.1.4
+Version: 0.1.5
 
 usage: splitter.py [-h] -csv CSV -n N [-na NA]
 
