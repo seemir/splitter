@@ -2,7 +2,7 @@
 
 __author__ = 'Samir Adrik and Mohamed Adrik'
 __email__ = 'samir.adrik@gmail.com, mohamed.adrik@knowit.no'
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 
 import os
 import sys
@@ -51,7 +51,7 @@ def splitter(args):
 
     Notes
     -----
-    If other that .csv file is passed to method a TypeError is raised
+    If other that .csv file is passed to method a OSError is raised
 
     """
     try:
