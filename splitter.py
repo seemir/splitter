@@ -60,9 +60,9 @@ def splitter(args):
         na = args.na if args.na else "NULL"
 
         start = time()
-        full_df = read_csv(file_name, delimiter=";").fillna(value=na)
-        header = list(full_df.head(0))
-        df_list = [DataFrame(columns=header) for _ in range(n)]
+        full_df = read_csv(file_name, delimiter=";").fillna(value=na).astype(str)
+        headers = list(full_df.head(0))
+        df_list = [DataFrame(columns=headers) for _ in range(n)]
         row_num = len(full_df.index)
 
         count = 0
@@ -85,6 +85,12 @@ def splitter(args):
             count += 1
             progress += 1
 
+        for df in df_list:
+            for header in headers:
+                if header == "MeteringPointId":
+                    continue
+                df[header] = "'" + df[header]
+
         print("\n\nfinished processing '{}' file, elapsed: {}s\n".format(
             file_name, round((time() - start), 7)))
 
@@ -100,12 +106,14 @@ def splitter(args):
             sys.stdout.write("\rsaving '{}' (#{})".format(saved_file_name, i + 1))
             sys.stdout.flush()
 
-            df.astype(str).reset_index(drop=True).to_excel(saved_file_name, index=False,
-                                                           sheet_name="ETA_{:02d}".format(i + 1))
+            df.reset_index(drop=True).to_excel(saved_file_name, index=False,
+                                               sheet_name="ETA_{:02d}".format(i + 1))
             wb = excel.Workbooks.Open(saved_file_name)
             excel.Worksheets(1).Activate()
             excel.ActiveSheet.Columns.AutoFit()
             excel.ActiveSheet.Columns.HorizontalAlignment = -4131
+            excel.ActiveSheet.Columns.Replace(".0", "")
+            excel.ActiveSheet.Columns.Replace("'", "")
             wb.Save()
             wb.Close()
 
