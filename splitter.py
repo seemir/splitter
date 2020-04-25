@@ -23,20 +23,20 @@ def splitter(args):
     algorithm starts over and appends the next series of rows into the same created files starting
     from file num 1, 2, 3 ... n, as follows:
 
-    csv_row[1]    -> append -> xlsx_file[1]
-    csv_row[2]    -> append -> xlsx_file[2]
+    csv_row[1]     -> append -> xlsx_file[1]
+    csv_row[2]     -> append -> xlsx_file[2]
     ...
-    csv_row[n]    -> append -> xlsx_file[n]
+    csv_row[n]     -> append -> xlsx_file[n]
 
-    csv_row[n+1]  -> append -> xlsx_file[1]
-    csv_row[n+2]  -> append -> xlsx_file[2]
+    csv_row[n+1]   -> append -> xlsx_file[1]
+    csv_row[n+2]   -> append -> xlsx_file[2]
     ...
-    csv_row[2n]   -> append -> xlsx_file[n]
+    csv_row[2n]    -> append -> xlsx_file[n]
 
-    csv_row[2n+1] -> append -> xlsx_file[1]
-    csv_row[2n+2] -> append -> xlsx_file[2]
+    csv_row[2n+1]  -> append -> xlsx_file[1]
+    csv_row[2n+2]  -> append -> xlsx_file[2]
     ...
-    csv_row[3n]   -> append -> xlsx_file[n]
+    csv_row[3n]    -> append -> xlsx_file[n]
     .
     .
     .
