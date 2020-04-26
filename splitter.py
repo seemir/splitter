@@ -54,11 +54,12 @@ def splitter(args):
 
     """
     try:
+        start = time()
+
         file_name = args.csv
         n = args.n
         na = args.na if args.na else "NULL"
 
-        start = time()
         full_df = read_csv(file_name, delimiter=";").fillna(value=na).astype(str)
         headers = list(full_df.head(0))
         df_list = [DataFrame(columns=headers) for _ in range(n)]
