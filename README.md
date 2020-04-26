@@ -1,7 +1,7 @@
 # Splitter
 
-Splitter is a naive / brute-force python library for dealing with splitting large `.csv` files containing data 
-into  separate `.xlsx` files. 
+Splitter is a naive / brute-force python library for dealing with splitting `.csv` files containing data 
+into `n` separate `.xlsx` files. 
 
 # Description 
 The library contains a `splitter()` function which takes in three arguments, i.e. `csv`, `n` and `na`[optional]. 
