@@ -2,7 +2,7 @@
 
 __author__ = 'Samir Adrik and Mohamed Adrik'
 __email__ = 'samir.adrik@gmail.com, mohamed.adrik@knowit.no'
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 
 import os
 import sys
@@ -60,7 +60,7 @@ def splitter(args):
         n = args.n
         na = args.na if args.na else "NULL"
 
-        full_df = read_csv(file_name, delimiter=";").fillna(value=na).astype(str)
+        full_df = read_csv(file_name, dtype=str, delimiter=";").fillna(value=na)
         headers = list(full_df.head(0))
         df_list = [DataFrame(columns=headers) for _ in range(n)]
         row_num = len(full_df.index)
@@ -84,13 +84,6 @@ def splitter(args):
 
             count += 1
             progress += 1
-
-        for df in df_list:
-            for header in headers:
-                if header == "MeteringPointId":
-                    continue
-                df[header] = "'" + df[header]
-
         print("\n\nfinished processing '{}' file, elapsed: {}s\n".format(
             file_name, round((time() - start), 7)))
 
@@ -112,8 +105,6 @@ def splitter(args):
             excel.Worksheets(1).Activate()
             excel.ActiveSheet.Columns.AutoFit()
             excel.ActiveSheet.Columns.HorizontalAlignment = -4131
-            excel.ActiveSheet.Columns.Replace(".0", "")
-            excel.ActiveSheet.Columns.Replace("'", "")
             wb.Save()
             wb.Close()
 
